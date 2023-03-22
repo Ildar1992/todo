@@ -7,7 +7,6 @@ export default class Task extends React.Component {
     dataText: null,
     value: this.props.task,
   };
-  a = 5;
   componentDidMount() {
     this.setStateDataText();
     this.timer();
