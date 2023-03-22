@@ -15,7 +15,7 @@ export default class Task extends React.Component {
     clearInterval(this.interval);
   }
   static defaultProps = {
-    id: 1,
+    id: 2,
     task: '',
     completed: false,
     date: new Date(),
