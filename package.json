@@ -2,31 +2,25 @@
   "name": "test",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "date-fns": "^2.29.3",
-    "prop-types": "^15.8.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
-  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "keywords": [],
+  "license": "ISC",
+  "author": "",
+  "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint:fix": "eslint \"**/*.{jsx,tsx}\" --fix --color",
-    "lint": "eslint \"**/*.{jsx,tsx}\"",
     "format": "prettier ./src --write",
-    "prepare": "husky install"
+    "lint": "eslint \"**/*.{jsx,tsx}\"",
+    "lint:fix": "eslint \"**/*.{jsx,tsx}\" --fix --color",
+    "prepare": "husky install",
+    "start": "react-scripts start",
+    "test": "react-scripts test"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
+  "lint-staged": {
+    "*.(js|jsx|ts|tsx)": [
+      "npm run lint:fix",
+      "git add ."
     ]
   },
   "browserslist": {
@@ -41,8 +35,23 @@
       "last 1 safari version"
     ]
   },
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
-  "main": "index.js",
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "date-fns": "^2.29.3",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
+  },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "eslint": "^8.36.0",
@@ -56,14 +65,5 @@
     "husky": "^8.0.3",
     "lint-staged": "^13.2.0",
     "prettier": "^2.8.6"
-  },
-  "lint-staged": {
-    "*.(js|jsx|ts|tsx)": [
-      "npm run lint:fix",
-      "git add ."
-    ]
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  }
 }

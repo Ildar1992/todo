@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import React from 'react';
 
 import NewTaskForm from '../NewTaskForm/NewTaskForm';
@@ -45,6 +46,7 @@ export default class App extends React.Component {
       const oldItem = todoData[idx];
       const newItem = { ...oldItem, completed: !oldItem.completed };
       const newArray = [...todoData.slice(0, idx), newItem, ...todoData.slice(idx + 1)];
+
       return {
         todoData: newArray,
       };
@@ -52,16 +54,10 @@ export default class App extends React.Component {
   };
 
   filterTask = () => {
-    switch (this.state.filter) {
-      case 'All':
-        return this.state.todoData;
-      case 'Active':
-        return this.state.todoData.filter((item) => !item.completed);
-      case 'Completed':
-        return this.state.todoData.filter((item) => item.completed);
-      default:
-        return this.state.todoData;
-    }
+    const { todoData, filter } = this.state;
+
+    if (filter === 'All') return todoData;
+    return todoData.filter((item) => (filter === 'Completed' ? item.completed : !item.completed));
   };
 
   onFilterChange = (filter) => {
@@ -78,11 +74,12 @@ export default class App extends React.Component {
   };
 
   editTask = (id) => {
-    this.setState(({ todoData }) => {
-      const idx = todoData.findIndex((el) => el.id === id);
-      const oldItem = todoData[idx];
-      const newItem = { ...oldItem, edit: !oldItem.edit };
-      const newArray = [...todoData.slice(0, idx), newItem, ...todoData.slice(idx + 1)];
+    const { todoData } = this.state;
+    const idx = todoData.findIndex((el) => el.id === id);
+    const oldItem = todoData[idx];
+    const newItem = { ...oldItem, edit: !oldItem.edit };
+    const newArray = [...todoData.slice(0, idx), newItem, ...todoData.slice(idx + 1)];
+    this.setState(() => {
       return {
         todoData: newArray,
       };

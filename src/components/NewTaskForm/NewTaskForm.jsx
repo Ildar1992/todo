@@ -14,13 +14,15 @@ export default class NewTaskForm extends React.Component {
   };
 
   onLabelChange = (e) => {
-    this.setState({ task: e.target.value });
+    this.setState({ task: e.target.value.trim() });
   };
 
   onSubmitForm = (e) => {
     e.preventDefault();
-    this.props.addItem(this.state.task);
-    this.setState({ task: '' });
+    if (this.state.task.length !== 0) {
+      this.props.addItem(this.state.task);
+      this.setState({ task: '' });
+    }
   };
 
   render() {
