@@ -29,24 +29,6 @@ export default class App extends React.Component {
     });
   };
 
-  onSubmitEdit = (event, id) => {
-    event.preventDefault();
-    this.setState(({ todoData }) => {
-      const index = todoData.findIndex((data) => data.id === id);
-      const oldData = todoData[index];
-      const newData = {
-        ...oldData,
-        edit: !oldData.edit,
-
-        task: event.target[0].value,
-      };
-      const newArray = [...todoData.slice(0, index), newData, ...todoData.slice(index + 1)];
-      return {
-        todoData: newArray,
-      };
-    });
-  };
-
   deleteItem = (id) => {
     this.setState(({ todoData }) => {
       const newArray = todoData.filter((item) => item.id !== id);
@@ -105,15 +87,35 @@ export default class App extends React.Component {
       };
     });
   };
+  onSubmitEdit = (event, id) => {
+    event.preventDefault();
+    this.setState(({ todoData }) => {
+      const index = todoData.findIndex((data) => data.id === id);
+      const oldData = todoData[index];
+      const newData = {
+        ...oldData,
+        edit: !oldData.edit,
+
+        task: event.target[0].value,
+      };
+      const newArray = [...todoData.slice(0, index), newData, ...todoData.slice(index + 1)];
+      return {
+        todoData: newArray,
+      };
+    });
+  };
   changeTimerValue = (id, value) => {
     this.setState(({ todoData }) => {
+      console.log(todoData);
       const index = todoData.findIndex((el) => {
         return el.id === id;
       });
-
+      console.log(index);
       const oldItem = todoData[index];
+      console.log(oldItem);
       if (typeof oldItem === 'undefined') return;
       const newItem = { ...oldItem, timer: value };
+      console.log(newItem);
       const newArray = [...todoData.slice(0, index), newItem, ...todoData.slice(index + 1)];
 
       return {

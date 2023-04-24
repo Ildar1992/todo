@@ -49,7 +49,7 @@ export default class Task extends React.Component {
   timerRun = () => {
     const { pause, timer } = this.state;
 
-    if (!pause) this.setState({ timer: timer - 1 });
+    if (pause) this.setState({ timer: timer - 1 });
   };
 
   componentDidMount() {
