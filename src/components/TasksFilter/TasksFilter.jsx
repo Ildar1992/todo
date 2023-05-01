@@ -10,7 +10,6 @@ export default class TasksFilter extends React.Component {
   static propTypes = {
     onFilterChange: PropTypes.func,
   };
-
   maxId = 100;
   state = {
     filter: 'All',
